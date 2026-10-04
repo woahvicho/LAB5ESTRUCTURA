@@ -37,7 +37,16 @@ Graph* createGraph() {
 
 void addNode(Graph* g, const char* label) {
     if (!g || !label) return;
-
+    // 1. Nos fijamos si el nodo ya está en el mapa
+    if (map_search(g->adjacencyMap, (void*)label) != NULL) {
+        return; // Ya existe el loco, no hacemos nada
+    }
+    // 2. Le sacamos una copia al nombre del nodo
+    char* copia_label = strdup(label);
+    // 3. Creamos una lista vacía para meterle sus aristas después
+    List* lista_aristas = list_create();
+    // 4. Guardamos el par (copia_label, lista_aristas) en el mapa
+    map_insert(g->adjacencyMap, copia_label, lista_aristas);
 }
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) {
