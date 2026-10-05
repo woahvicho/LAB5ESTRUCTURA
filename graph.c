@@ -71,30 +71,17 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight) {
 }
 
 List* getEdges(Graph* g, const char* label) {
-    if (!g || !label1 || !label2) return -1;
-    // 1. Sacamos la lista de aristas del nodo origen (label1)
-    List* lista_aristas = (List*)map_search(g->adjacencyMap, (void*)label1);
-    if (!lista_aristas) return -1; // Si no está el nodo, retornamos -1 altiro
-    // 2. Empezamos a recorrer la lista a ver qué onda
-    Edge* arista_actual = (Edge*)list_first(lista_aristas);
-    while (arista_actual != NULL) {
-        // Si pillamos el destino que calza con label2, devolvemos el peso
-        if (strcmp(arista_actual->target, label2) == 0) {
-            return arista_actual->weight;
-        }
-        arista_actual = (Edge*)list_next(lista_aristas);
-    }
-    // Si recorrimos todo y no pillamos ni una cuestión, retornamos -1
-    return -1; 
+    if (!g || !label) return NULL; // Si falla la validación, retorna NULL
+    // 1. Buscamos el nodo en el mapa para sacar su lista de aristas
+    List* lista_aristas = (List*)map_search(g->adjacencyMap, (void*)label);
+    // 2. Soltamos la lista (o NULL si el nodo no existe en el mapa)
+    return lista_aristas;
 }
-
 int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!g || !label1 || !label2) return -1;
-
     // Si no existe el origen o terminamos de iterar sin encontrar el destino
     return -1; 
 }
-
 // Retorna una nueva List* que contiene elementos de tipo char* (las etiquetas)
 List* getAdjacentLabels(Graph* g, const char* label) {
     if (!g || !label) return NULL;
