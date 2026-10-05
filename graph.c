@@ -12,11 +12,11 @@
  * ========================================= */
 
 struct Graph {
-    // Con un puro mapa estamos listos: Llave (char* label) -> Valor (List* de Edge*)
+    // Un solo mapa basta: Llave (char* label) -> Valor (List* de Edge*)
     Map* adjacencyMap; 
 };
 
-// Función auxiliar para comparar si dos cadenas son iguales po
+    // Función auxiliar para comparar strings en el mapa
 int is_equal_string(void *key1, void *key2) {
     return strcmp((char*)key1, (char*)key2) == 0;
 }
