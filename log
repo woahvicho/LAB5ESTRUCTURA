@@ -87,3 +87,31 @@ graph.c:75:12: error: returning ‘int’ from a function with return type ‘Li
    75 |     return -1;
       |            ^
 32be45e
+Mon Oct  5 12:10:43 AM UTC 2026: 
+ graph.c | 23 ++++++++++++++++++-----
+ 1 file changed, 18 insertions(+), 5 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getEdges’:
+graph.c:74:16: error: ‘label1’ undeclared (first use in this function); did you mean ‘label’?
+   74 |     if (!g || !label1 || !label2) return -1;
+      |                ^~~~~~
+      |                label
+graph.c:74:16: note: each undeclared identifier is reported only once for each function it appears in
+graph.c:74:27: error: ‘label2’ undeclared (first use in this function); did you mean ‘label’?
+   74 |     if (!g || !label1 || !label2) return -1;
+      |                           ^~~~~~
+      |                           label
+graph.c:74:42: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   74 |     if (!g || !label1 || !label2) return -1;
+      |                                          ^
+graph.c:77:32: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   77 |     if (!lista_aristas) return -1; // Si no está el nodo, retornamos -1 altiro
+      |                                ^
+graph.c:83:33: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   83 |             return arista_actual->weight;
+      |                    ~~~~~~~~~~~~~^~~~~~~~
+graph.c:88:12: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   88 |     return -1;
+      |            ^
+15819e3

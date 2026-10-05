@@ -50,11 +50,24 @@ void addNode(Graph* g, const char* label) {
 }
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) {
-    if (!g || !label) return NULL;
-    // 1. Buscamos el nodo en el mapa para sacar su lista de aristas
-    List* lista_aristas = (List*)map_search(g->adjacencyMap, (void*)label);
-    // 2. Soltamos la lista (o NULL si el nodo no existe en el mapa)
-    return lista_aristas;
+    if (!g || !src || !dest) return; // Solo 'return;' sin devolver NULL ni nada
+
+    // 1. Buscamos la lista de aristas del nodo de origen (src)
+    List* lista_aristas = (List*)map_search(g->adjacencyMap, (void*)src);
+    if (!lista_aristas) return; // Si el origen no existe, nos salimos con un 'return;' pelao
+
+    // 2. Pedimos memoria para crear la nueva arista
+    Edge* nueva_arista = (Edge*)malloc(sizeof(Edge));
+    if (!nueva_arista) return;
+
+    // 3. Le chantamos el peso y le hacemos una copia al nombre del destino
+    nueva_arista->weight = weight;
+    nueva_arista->target = strdup(dest);
+
+    // 4. Metemos la nueva arista al final de la lista del nodo origen
+    list_pushBack(lista_aristas, nueva_arista);
+
+    // NO se pone ningún return al final (o solo 'return;') porque la función es void
 }
 
 List* getEdges(Graph* g, const char* label) {
