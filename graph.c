@@ -39,7 +39,7 @@ void addNode(Graph* g, const char* label) {
     if (!g || !label) return;
     // 1. Nos fijamos si el nodo ya está en el mapa
     if (map_search(g->adjacencyMap, (void*)label) != NULL) {
-        return; // Ya existe el loco, no hacemos nada
+        return; // si Ya existe, no hacemos nada
     }
     // 2. Le sacamos una copia al nombre del nodo
     char* copia_label = strdup(label);
@@ -50,8 +50,11 @@ void addNode(Graph* g, const char* label) {
 }
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) {
-    if (!g || !src || !dest) return;
-
+    if (!g || !label) return NULL;
+    // 1. Buscamos el nodo en el mapa para sacar su lista de aristas
+    List* lista_aristas = (List*)map_search(g->adjacencyMap, (void*)label);
+    // 2. Soltamos la lista (o NULL si el nodo no existe en el mapa)
+    return lista_aristas;
 }
 
 List* getEdges(Graph* g, const char* label) {

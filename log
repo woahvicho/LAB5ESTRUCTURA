@@ -20,3 +20,26 @@ Sun Oct  4 11:50:30 PM UTC 2026:
  1 file changed, 10 insertions(+), 1 deletion(-)
  tests:  0|0
 31a6d0b
+Mon Oct  5 12:07:35 AM UTC 2026: 
+ graph.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘addEdge’:
+graph.c:53:16: error: ‘label’ undeclared (first use in this function)
+   53 |     if (!g || !label) return NULL;
+      |                ^~~~~
+graph.c:53:16: note: each undeclared identifier is reported only once for each function it appears in
+graph.c:53:30: error: ‘return’ with a value, in function returning void [-Wreturn-mismatch]
+   53 |     if (!g || !label) return NULL;
+      |                              ^~~~
+graph.c:52:6: note: declared here
+   52 | void addEdge(Graph* g, const char* src, const char* dest, int weight) {
+      |      ^~~~~~~
+graph.c:57:12: error: ‘return’ with a value, in function returning void [-Wreturn-mismatch]
+   57 |     return lista_aristas;
+      |            ^~~~~~~~~~~~~
+graph.c:52:6: note: declared here
+   52 | void addEdge(Graph* g, const char* src, const char* dest, int weight) {
+      |      ^~~~~~~
+e71cda2
