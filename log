@@ -43,3 +43,47 @@ graph.c:52:6: note: declared here
    52 | void addEdge(Graph* g, const char* src, const char* dest, int weight) {
       |      ^~~~~~~
 e71cda2
+Mon Oct  5 12:09:50 AM UTC 2026: 
+ graph.c | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘addEdge’:
+graph.c:53:16: error: ‘label’ undeclared (first use in this function)
+   53 |     if (!g || !label) return NULL;
+      |                ^~~~~
+graph.c:53:16: note: each undeclared identifier is reported only once for each function it appears in
+graph.c:53:30: error: ‘return’ with a value, in function returning void [-Wreturn-mismatch]
+   53 |     if (!g || !label) return NULL;
+      |                              ^~~~
+graph.c:52:6: note: declared here
+   52 | void addEdge(Graph* g, const char* src, const char* dest, int weight) {
+      |      ^~~~~~~
+graph.c:57:12: error: ‘return’ with a value, in function returning void [-Wreturn-mismatch]
+   57 |     return lista_aristas;
+      |            ^~~~~~~~~~~~~
+graph.c:52:6: note: declared here
+   52 | void addEdge(Graph* g, const char* src, const char* dest, int weight) {
+      |      ^~~~~~~
+graph.c: In function ‘getEdges’:
+graph.c:61:16: error: ‘label1’ undeclared (first use in this function); did you mean ‘label’?
+   61 |     if (!g || !label1 || !label2) return -1;
+      |                ^~~~~~
+      |                label
+graph.c:61:27: error: ‘label2’ undeclared (first use in this function); did you mean ‘label’?
+   61 |     if (!g || !label1 || !label2) return -1;
+      |                           ^~~~~~
+      |                           label
+graph.c:61:42: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   61 |     if (!g || !label1 || !label2) return -1;
+      |                                          ^
+graph.c:64:32: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   64 |     if (!lista_aristas) return -1; // Si no está el nodo, retornamos -1 altiro
+      |                                ^
+graph.c:70:33: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   70 |             return arista_actual->weight;
+      |                    ~~~~~~~~~~~~~^~~~~~~~
+graph.c:75:12: error: returning ‘int’ from a function with return type ‘List *’ makes pointer from integer without a cast [-Wint-conversion]
+   75 |     return -1;
+      |            ^
+32be45e
